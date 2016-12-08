@@ -1,0 +1,18 @@
+{
+  "name": "tp_5irc_node",
+  "version": "1.0.0",
+  "description": "tp 5irc nodejs step by step",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "private": true,
+  "author": "timothée troncy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "0.0.0"
+  }
+}
