@@ -17,7 +17,8 @@ function authFnc($log, $http, $q) {
     var fncContainer = {
         checkUser: checkUser,
         userList: userList,
-        localAuthAsk: localAuthAsk
+        localAuthAsk: localAuthAsk,
+        authAsk: authAsk
     };
 
     function checkUser(userlogin, userpwd) {
@@ -43,5 +44,19 @@ function authFnc($log, $http, $q) {
         }, 3000, login, pwd);
         return deferred.promise;
     }
+
+    function authAsk(login, pwd) {
+        var deferred = $q.defer();
+        $http.post('/fakeauthwatcher', {
+            'login': login,
+            'pwd': pwd
+        }).success(function(data, status, headers, config) {
+            deferred.resolve(roleMap[login]);
+        }).error(function(data, status, headers, config) {
+            deferred.reject({'headers':headers, 'status': status});
+            // or server returns response with an error status.
+        });
+        return deferred.promise;
+    };
     return fncContainer;
 }

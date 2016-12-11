@@ -13,8 +13,10 @@ function loginCrtFnt($scope, $log, $window, auth) {
         //       $scope.errorMessage = 'Invalid Credentials';
         //     }
         // }
+
         if (user != null) {
-            var promise = auth.localAuthAsk(user.login, user.pwd);
+            //var promise = auth.localAuthAsk(user.login, user.pwd);
+            var promise = auth.authAsk(user.login, user.pwd);
             promise.then(function(role) {
                 switch (role) {
                     case 'admin':
@@ -27,8 +29,8 @@ function loginCrtFnt($scope, $log, $window, auth) {
                         $scope.errorMessage = 'Unknown role';
 
                 }
-            }, function(role) {
-                $scope.errorMessage = 'Invalid Credentials';
+            }, function(error) {
+                $scope.errorMessage = error;
             });
         }
     };
