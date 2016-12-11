@@ -1,15 +1,23 @@
 angular.module('authService', []).service('auth', authFnc);
-authFnc.$inject = ['$log'];
+authFnc.$inject = ['$log', '$http', '$q'];
 
-function authFnc($log) {
+function authFnc($log, $http, $q) {
     var userMap = {};
     userMap['jdoe'] = 'jdoepwd';
     userMap['tim'] = 'tim';
     userMap['psmith'] = 'psmithpwd';
     userMap['tp'] = 'tp';
+
+    var roleMap = {};
+    roleMap['jdoe'] = 'watcher';
+    roleMap['tim'] = 'admin';
+    roleMap['psmith'] = 'watcher';
+    roleMap['tp'] = 'admin';
+
     var fncContainer = {
         checkUser: checkUser,
-        userList: userList
+        userList: userList,
+        localAuthAsk: localAuthAsk
     };
 
     function checkUser(userlogin, userpwd) {
@@ -23,7 +31,17 @@ function authFnc($log) {
         }
     };
 
-
-
+    function localAuthAsk(login, pwd) {
+        var deferred = $q.defer();
+        setInterval(function(login, pwd) {
+            if (userMap[login] === pwd) {
+                deferred.resolve(roleMap[login]);
+            } else {
+                deferred.reject('Invalid Credentials');
+            }
+            clearInterval(this);
+        }, 3000, login, pwd);
+        return deferred.promise;
+    }
     return fncContainer;
 }
