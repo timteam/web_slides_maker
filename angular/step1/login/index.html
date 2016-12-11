@@ -35,6 +35,7 @@
                                         <p>Password:
                                             <span ng-bind="user.pwd"></span>
                                         </p>
+                                        <span class="label label-warning">{{errorMessage}}</span>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" class="btn" ng-click="logAuthObject(user)">Lets go!</button>
@@ -47,12 +48,14 @@
             </div>
         </div>
 
-        <!-- Javascript -->
+        <!-- Javascript Libs-->
         <script src="lib/jquery/dist/jquery.min.js"></script>
         <script src="lib/angular/angular.min.js"></script>
-        <script src="js/controllers/LoginController-s1.1.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/application/LoginApp-s1.2.js"></script>
 
+        <!-- Javascript App-->
+        <script src="js/application/LoginApp.js"></script>
+        <script src="js/controllers/LoginController.js"></script>
+        <script src="js/services/AuthService.js"></script>
     </body>
 </html>
