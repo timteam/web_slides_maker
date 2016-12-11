@@ -5,11 +5,15 @@ angular.module( 'loginApp' )
 loginCrtFnt.$inject = [ '$scope', '$log' ];
 
 function loginCrtFnt( $scope, $log ) {
-  $scope.logAuth = function () {
-    $log.info( 'user login', $scope.user.login );
-    $log.info( 'user pwd', $scope.user.pwd );
-  };
+  // $scope.logAuth = function () {
+  //   $log.info( 'user login', $scope.user.login );
+  //   $log.info( 'user pwd', $scope.user.pwd );
+  // };
   $scope.logAuthObject = function ( user ) {
-    // TODO
+    $log.info( 'user login', user.login );
+    $log.info( 'user pwd', user.pwd );
   };
+  // $scope.login = function () {
+  //   $log.info( 'login action called' );
+  // }
 }
