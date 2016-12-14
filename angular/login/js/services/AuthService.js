@@ -51,9 +51,9 @@ function authFnc($log, $http, $q) {
             'login': login,
             'pwd': pwd
         }).success(function(data, status, headers, config) {
-            deferred.resolve(roleMap[login]);
+            deferred.resolve(roleMap[login]);//add role and token
         }).error(function(data, status, headers, config) {
-            deferred.reject({'headers':headers, 'status': status});
+            deferred.reject({'headers':headers, 'status': status, 'test':'test'});
             // or server returns response with an error status.
         });
         return deferred.promise;
