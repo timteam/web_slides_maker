@@ -9,21 +9,25 @@ function eventCtrlFn($scope, $log, $window, factory) {
     };
 
     $scope.newSlide = function() {
-      //add object slide that contains an object content to currentPresentation
+        //add object slide that contains an object content to currentPresentation
         $scope.currentPresentation.slides.push({
-                title: 'Slide Title',
-                content: {text:'Content Text', img:'banner-angularjs.jpg'}
-            });
+            title: 'Slide Title',
+            selected: false,
+            content: {
+                text: 'Content Text',
+                img: 'banner-angularjs.jpg'
+            }
+        });
     };
 
-
-    $scope.selectCurrentSlid = function(slide) {
+    $scope.selectCurrentSlide = function(slide) {
+        angular.forEach($scope.currentPresentation.slides, function(value, key) {
+            $scope.currentPresentation.slides[key].selected = false;
+        })
+        slide.selected = true;
         $scope.currentSlide = slide;
     }
-    $scope.isSlidContentEmpty = function(slid) {
-        if (slid.contentMap[1] == undefined) {
-            return true;
-        }
-        return false;
+    $scope.isSlideContentEmpty = function(slide) {
+        return (slide.contentMap[1] === undefined) ? true : false;
     }
 }

@@ -29,17 +29,16 @@
                             </button>
                         </div>
                         <div class="form-group">
-                            <label for="currentPresTitle">Title</label>
+                            <label for="currentPresTitle">Presentation Title</label>
                             <input type="text" ng-model="currentPresentation.title" class="form-control" id="currentPresTitle">
                         </div>
                         <div ng-repeat="slide in currentPresentation.slides">
-                            <div class="row">
+                            <div class="row" ng-style="{'border-style':(slide.selected?'solid':'')}">
                                 <div class="thumbnail">
                                     <div class="caption">
                                         <h3>{{slide.title}}</h3>
                                     </div>
-                                    <img src="img/{{slide.content.img}}" alt="{{slide.title}}">
-                                    <!-- TODO insert image -->
+                                    <img ng-src="img/{{slide.content.img}}" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
                                 </div>
                             </div>
                         </div>
@@ -50,8 +49,16 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullScreenHeight">
                         <div class="form-group">
-                            <!-- TODO DISPLAY CURRENT SLID TITLE AND DESCRIPTION (EDITION) -->
+                          <label for="currentSlideTitle">Slide Title</label>
+                          <input type="text" ng-model="currentSlide.title" class="form-control" id="currentSlideTitle">
+                          <label for="currentSlideDesc">Slide Description</label>
+                          <textarea ng-model="currentSlide.desc" rows="4" class="form-control" id="currentSlideDesc"></textarea>
                         </div>
+                        <div class="row">
+                          <div class="thumbnail">
+                        <img ng-src="img/{{currentSlide.content.img}}" ng-alt="{{currentSlide.title}}" class="img-rounded">
+                      </div>
+                      </div>
                         <!-- TODO DISPLAY CONTENT IMAGE (DISPLAY) -->
                     </div>
                 </div>
