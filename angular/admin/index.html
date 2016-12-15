@@ -38,7 +38,8 @@
                                     <div class="caption">
                                         <h3>{{slide.title}}</h3>
                                     </div>
-                                    <img ng-src="img/{{slide.content.img}}" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
+                                    <img ng-if="slide.content.img" ng-src="img/{{slide.content.img}}" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
+                                    <img ng-if="!slide.content.img" ng-src="img/no-image.jpg" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
                                 </div>
                             </div>
                         </div>
@@ -47,19 +48,19 @@
                 <!-- ************* CENTER PANEL *************-->
                 <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 zeroRef fullScreenHeight">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullScreenHeight">
+                    <div ng-show="currentSlide" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullScreenHeight">
                         <div class="form-group">
-                          <label for="currentSlideTitle">Slide Title</label>
-                          <input type="text" ng-model="currentSlide.title" class="form-control" id="currentSlideTitle">
-                          <label for="currentSlideDesc">Slide Description</label>
-                          <textarea ng-model="currentSlide.desc" rows="4" class="form-control" id="currentSlideDesc"></textarea>
+                            <label for="currentSlideTitle">Slide Title</label>
+                            <input type="text" ng-model="currentSlide.title" class="form-control" id="currentSlideTitle">
+                            <label for="currentSlideDesc">Slide Description</label>
+                            <textarea ng-model="currentSlide.desc" rows="4" class="form-control" id="currentSlideDesc"></textarea>
                         </div>
                         <div class="row">
-                          <div class="thumbnail">
-                        <img ng-src="img/{{currentSlide.content.img}}" ng-alt="{{currentSlide.title}}" class="img-rounded">
-                      </div>
-                      </div>
-                        <!-- TODO DISPLAY CONTENT IMAGE (DISPLAY) -->
+                            <div class="thumbnail">
+                                <img ng-if="currentSlide.content.img" ng-src="img/{{currentSlide.content.img}}" ng-alt="{{currentSlide.title}}" class="img-rounded">
+                                <img ng-if="!currentSlide.content.img" src="img/no-image.jpg" ng-alt="{{currentSlide.title}}" class="img-rounded">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

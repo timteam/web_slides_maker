@@ -15,7 +15,7 @@ function eventCtrlFn($scope, $log, $window, factory) {
             selected: false,
             content: {
                 text: 'Content Text',
-                img: 'banner-angularjs.jpg'
+                img:''
             }
         });
     };
