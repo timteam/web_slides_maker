@@ -1,1 +1,5 @@
-/Users/timotheetroncy/Documents/repos/5irc_projet/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/services/IHelloWorldService.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/services/IHelloWorldService.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/dao/UserDAO.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/model/UserModel.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/model/UserResponseModel.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJBClient/src/main/java/fr/cpe/services/IUserService.java

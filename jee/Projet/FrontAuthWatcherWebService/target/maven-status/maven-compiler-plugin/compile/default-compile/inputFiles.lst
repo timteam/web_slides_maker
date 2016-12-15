@@ -1,3 +1,5 @@
-/Users/timotheetroncy/Documents/repos/5irc_projet/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/IHelloWord.java
-/Users/timotheetroncy/Documents/repos/5irc_projet/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/ApplicationRestInit.java
-/Users/timotheetroncy/Documents/repos/5irc_projet/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/impl/HelloWord.java
+/Users/Margaux/WorkspaceJEE/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/IUserRestWS.java
+/Users/Margaux/WorkspaceJEE/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/impl/UserRestWS.java
+/Users/Margaux/WorkspaceJEE/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/impl/HelloWord.java
+/Users/Margaux/WorkspaceJEE/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/ApplicationRestInit.java
+/Users/Margaux/WorkspaceJEE/Projet/FrontAuthWatcherWebService/src/main/java/fr/cpe/rest/IHelloWord.java
