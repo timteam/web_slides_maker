@@ -14,8 +14,8 @@ function commFnc($http, $q, factory) {
         //var contentMap = {"key1":"value1","key2":"value2"};
         var contentMap = {};
         setInterval(function(presID) {
-            for (var i = 0; i < 9; i++) {
-                contentMap[i] = factory.contentCreation('Title ' + i, 'jpg', 'img/' + i + '.jpg');
+            for (var i = 0; i < 10; i++) {
+                contentMap[i] = factory.contentCreation('Title ' + i, 'type '+ i + 10, 'img/' + i + '.jpg');
             }
             clearInterval(this);
             deferred.resolve(contentMap);

@@ -38,11 +38,11 @@
                         </div>
                         <div class="form-group">
                             <label for="currentPresTitle">Title</label>
-                            <input type="text" ng-model="currentPresenation.title" class="form-control" id="currentPresTitle">
+                            <input type="text" ng-model="currentPresentation.title" class="form-control" id="currentPresTitle">
                         </div>
 
                     </div>
-                    <div ng-repeat="slid in currentPresenation.slidArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-click="selectCurrentSlid(slid)">
+                    <div ng-repeat="slid in currentPresentation.slideArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-click="selectCurrentSlid(slid)">
                         <h3>{{slid.title}}</h3>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 slidZoneEmpty" ng-class="{'slidZoneSelectedEmpty': slid.id == currentSlide.id, 'hide':slid.contentMap[1]!=undefined}">
                             Slid Zone
@@ -94,7 +94,7 @@
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 divOverflow">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchContent.title">
+                            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchContent.type">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

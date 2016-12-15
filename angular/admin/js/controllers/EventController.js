@@ -15,34 +15,36 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     $scope.presentationMap.payload = "";
 
     var available_content = comm.loadImages('test', 'test');
+    var firstPresentation = comm.loadPres('test', 'test');
+
     available_content.then(
         function(payload) {
             $scope.contentMap.payload = payload;
             $scope.contentMap.array = factory.mapToArray(payload);
         },
         function(errorPayload) {
-            $log.error('failure loading movie', errorPayload);
+            $log.error('failure loading images', errorPayload);
         });
 
-    var firstPresentation = comm.loadPres('test', 'test');
     firstPresentation.then(
         function(payload) {
             $scope.presentationMap.payload = payload;
 
             for (key in $scope.presentationMap.payload) {
+              //TODO
                 $scope.currentPresentation = $scope.presentationMap.payload[key];
             }
 
         },
         function(errorPayload) {
-            $log.error('failure loading movie', errorPayload);
+            $log.error('failure loading presentation', errorPayload);
         });
 
 
     $scope.newSlide = function() {
-        var slid = factory.slidCreation("slide-Title", "slide-text");
-        $scope.currentPresentation.slideArray.push(slid);
-
+        var slide = factory.slidCreation("slide-Title", "slide-text");
+        $scope.currentPresentation.slideArray.push(slide);
+        console.log($scope.currentPresentation);
     }
 
     $scope.savePres = function() {
