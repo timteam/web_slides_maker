@@ -1,0 +1,5 @@
+fr/cpe/dao/UserDAO.class
+fr/cpe/model/UserModel.class
+fr/cpe/services/IUserService.class
+fr/cpe/model/UserResponseModel.class
+fr/cpe/services/IHelloWorldService.class
