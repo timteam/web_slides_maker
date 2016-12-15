@@ -13,22 +13,27 @@ function commFnc($http, $q, factory) {
         var deferred = $q.defer();
         //var contentMap = {"key1":"value1","key2":"value2"};
         var contentMap = {};
-        setInterval(function(presID) {
+        setInterval(function() {
             for (var i = 0; i < 10; i++) {
-                contentMap[i] = factory.contentCreation('Title ' + i, 'type ' + i + 10, 'img/' + i + '.jpg');
+                var content = factory.contentCreation('Title ' + i, 'type ' + i + 10, 'img/' + i + '.jpg');
+                contentMap[content.id] = content;
             }
             clearInterval(this);
             deferred.resolve(contentMap);
-        }, 3000, presID);
+        }, 3000);
         return deferred.promise;
     };
 
     function loadPres(presName, presID) {
         var deferred = $q.defer();
-        setInterval(function(presID) {
+        var presentationMap = {};
+        setInterval(function() {
+            for (var i = 0; i < 10; i++) {
+                presentationMap[i] = factory.presentationCreation(presName, 'description');
+            }
             clearInterval(this);
-            deferred.resolve(factory.presentationCreation(presName,'description'));
-        }, 3000, presID);
+            deferred.resolve(presentationMap);
+        }, 3000);
         return deferred.promise;
     };
 

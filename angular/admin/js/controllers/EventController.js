@@ -7,10 +7,11 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
 
     $scope.currentPresentation = factory.presentationCreation("template_pres", "description of the template présentation");
 
-    //CREATE an object for interactions with ng-include controller
+    //for available content
     $scope.contentMap = {};
     $scope.contentMap.payload = "";
 
+    //for presentation content
     $scope.presentationMap = {};
     $scope.presentationMap.payload = "";
 
@@ -32,7 +33,7 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
             $scope.presentationMap.payload = payload;
             //TODO check next line
             for (key in $scope.presentationMap.payload) {
-                $scope.currentPresentation[key] = $scope.presentationMap.payload[key];
+                $scope.currentPresentation = $scope.presentationMap.payload[key];
             }
         },
         function(errorPayload) {
@@ -64,8 +65,11 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
         if ($scope.currentSlide != undefined) {
             $scope.currentSlide.contentMap[1] = data.id;
             //needed to inform angular that a change occurred on the current variable, this fire an event change
-            $scope.$apply()
+            $scope.$apply();
+            //contentMap.payload[currentSlide.contentMap[1]].src
             console.log("drop success, data:", data);
+            console.log("drop success, contentMap.payload:", $scope.contentMap.payload);
+            console.log("drop success, currentSlide.contentMap[1]:", $scope.currentSlide.contentMap[1]);
         }
     }
 
