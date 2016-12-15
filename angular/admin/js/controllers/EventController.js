@@ -3,21 +3,10 @@ angular.module('adminApp')
 eventCtrlFn.$inject = ['$scope', '$log', '$window', 'factory'];
 
 function eventCtrlFn($scope, $log, $window, factory) {
-    $scope.currentPresentation = {
-        title: 'Presentation Title',
-        slides: [],
-    };
+    $scope.currentPresentation = factory.presentationCreation('Presentation Title', 'Pres description');
 
     $scope.newSlide = function() {
-        //add object slide that contains an object content to currentPresentation
-        $scope.currentPresentation.slides.push({
-            title: 'Slide Title',
-            selected: false,
-            content: {
-                text: 'Content Text',
-                img:''
-            }
-        });
+        $scope.currentPresentation.slides.push( factory.slidCreation('Slide Title', 'Slide desc'));
     };
 
     $scope.selectCurrentSlide = function(slide) {
@@ -27,6 +16,7 @@ function eventCtrlFn($scope, $log, $window, factory) {
         slide.selected = true;
         $scope.currentSlide = slide;
     }
+
     $scope.isSlideContentEmpty = function(slide) {
         return (slide.contentMap[1] === undefined) ? true : false;
     }

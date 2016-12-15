@@ -23,15 +23,30 @@ function factoryFnc() {
     };
 
     function contentCreation(title, type, src) {
-        // TODO
+        return {
+            id: generateUUID(),
+            title: title,
+            type: type,
+            src: src
+        };
     };
 
     function slidCreation(title, txt) {
-        // TODO
+        return {
+            id: generateUUID(),
+            title: title,
+            selected: false,
+            content: contentCreation('Content title', 'Content type', '')
+        };
     };
 
     function presentationCreation(title, description) {
-        // TODO
+        return {
+            id: generateUUID(),
+            title: title,
+            desc: description,
+            slides: []
+        };
     };
 
     function mapToArray(map) {
