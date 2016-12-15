@@ -48,7 +48,7 @@
                             Slid Zone
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 slidZone" ng-class="{'slidZoneSelected': slid.id == currentSlide.id, 'hide':slid.contentMap[1]==undefined}">
-                            <img src="{{contentMap.payload[slid.contentMap[1]].src}}" alt="{{contentMap.payload[slid.contentMap[1]].title}}" class="img-responsive">
+                            <img ng-src="{{contentMap.payload[slid.contentMap[1]].src}}" alt="{{contentMap.payload[slid.contentMap[1]].title}}" class="img-responsive">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                             <textarea rows="5" type="text" ng-model="currentSlide.txt" class="form-control" id="currentSlideText"></textarea>
                         </div>
                         <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" style="min-height: 100px;min-width: 100px;">
-                            <img src="{{contentMap.payload[currentSlide.contentMap[1]].src}}" alt="{{contentMap.payload[currentSlide.contentMap[1]].title}}" class="img-responsive">
+                            <img ng-src="{{contentMap.payload[currentSlide.contentMap[1]].src}}" alt="{{contentMap.payload[currentSlide.contentMap[1]].title}}" class="img-responsive">
                         </div>
                     </div>
 
@@ -105,11 +105,11 @@
                     </div>
                     <div id="dropZone" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div ng-include="'pages/DropZoneArea.html'"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentBlock" ng-repeat="content in contentMap.array | filter:searchContent | orderBy: 'title'">
-                        <input type="text" ng-model="content.title" class="form-control" id="currentContentTitle">
-                        <div ng-drag="true" ng-drag-data="content" ng-drag-success="onDragComplete($data,$event)">
-                            <img ng-src="{{content.src}}" alt="{{content.title}}" class="img-thumbnail">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentBlock" ng-repeat="content in contentMap.array | filter:searchContent | orderBy: 'title'">
+                            <input type="text" ng-model="content.title" class="form-control" id="currentContentTitle">
+                            <div ng-drag="true" ng-drag-data="content" ng-drag-success="onDragComplete($data,$event)">
+                                <img ng-src="{{content.src}}" alt="{{content.title}}" class="img-thumbnail">
+                            </div>
                         </div>
                     </div>
                 </div>
