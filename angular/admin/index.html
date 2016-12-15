@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp" ng-controller="eventCtrl">
+    <head>
+        <title>adminApp</title>
+        <!-- Style -->
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+        <link href="css/js.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid fullScreenHeight zeroRef">
+            <div class="row container-fluid fullScreenHeight ">
+                <!-- ************* LEFT PANEL *************-->
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 zeroRef fullScreenHeight divOverflow">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default" ng-click="savePres()">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="newSlide()">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentPresTitle">Presentation Title</label>
+                            <input type="text" ng-model="currentPresentation.title" class="form-control" id="currentPresTitle">
+                        </div>
+                        <div ng-repeat="slide in currentPresentation.slides">
+                            <div class="row" ng-style="{'border-style':(slide.selected?'solid':'')}">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h3>{{slide.title}}</h3>
+                                    </div>
+                                    <img ng-if="slide.content.img" ng-src="img/{{slide.content.img}}" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
+                                    <img ng-if="!slide.content.img" ng-src="img/no-image.jpg" ng-alt="{{slide.title}}" ng-click="selectCurrentSlide(slide)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ************* CENTER PANEL *************-->
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 zeroRef fullScreenHeight">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                    <div ng-show="currentSlide" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullScreenHeight">
+                        <div class="form-group">
+                            <label for="currentSlideTitle">Slide Title</label>
+                            <input type="text" ng-model="currentSlide.title" class="form-control" id="currentSlideTitle">
+                            <label for="currentSlideDesc">Slide Description</label>
+                            <textarea ng-model="currentSlide.desc" rows="4" class="form-control" id="currentSlideDesc"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="thumbnail">
+                                <img ng-if="currentSlide.content.img" ng-src="img/{{currentSlide.content.img}}" ng-alt="{{currentSlide.title}}" class="img-rounded">
+                                <img ng-if="!currentSlide.content.img" src="img/no-image.jpg" ng-alt="{{currentSlide.title}}" class="img-rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript Libs-->
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Javascript App-->
+        <script src="js/application/AdminApp.js"></script>
+        <script src="js/controllers/EventController.js"></script>
+        <script src="js/services/FactoryService.js"></script>
+
+    </body>
+</html>

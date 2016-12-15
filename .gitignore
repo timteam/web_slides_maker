@@ -1,6 +1,8 @@
 /node/node_modules/*
 /jee/Projet/wildfly-10.1.0.Final/*
 /angular/step1/login/lib/*
+/angular/login/lib/*
+/angular/admin/lib/*
 
 jee/.metadata/*
 
