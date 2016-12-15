@@ -85,7 +85,10 @@
                             <textarea rows="5" type="text" ng-model="currentSlide.txt" class="form-control" id="currentSlideText"></textarea>
                         </div>
                         <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" style="min-height: 100px;min-width: 100px;">
-                            <img ng-src="{{contentMap.payload[currentSlide.contentMap[1]].src}}" alt="{{contentMap.payload[currentSlide.contentMap[1]].title}}" class="img-responsive">
+                            <img ng-if="contentMap.payload[currentSlide.contentMap[1]].src" ng-src="{{contentMap.payload[currentSlide.contentMap[1]].src}}" alt="{{contentMap.payload[currentSlide.contentMap[1]].title}}" class="img-responsive">
+                            <div ng-if="!contentMap.payload[currentSlide.contentMap[1]].src" class="jumbotron">
+                              <h1>Drag image here</h1>
+                            </div>
                         </div>
                     </div>
 
