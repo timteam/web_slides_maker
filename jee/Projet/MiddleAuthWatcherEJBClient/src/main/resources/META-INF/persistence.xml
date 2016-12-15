@@ -30,7 +30,8 @@
 
       <properties>
          <!-- Properties for Hibernate -->
-         <property name="hibernate.show_sql" value="false" />
+         <property name="hibernate.show_sql" value="true" />
+        <!--  <property name="hibernate.default_schema" value="projet"/> -->
       </properties>
    </persistence-unit>
 </persistence>
