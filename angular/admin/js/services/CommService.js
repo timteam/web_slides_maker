@@ -15,7 +15,7 @@ function commFnc($http, $q, factory) {
         var contentMap = {};
         setInterval(function(presID) {
             for (var i = 0; i < 10; i++) {
-                contentMap[i] = factory.contentCreation('Title ' + i, 'type '+ i + 10, 'img/' + i + '.jpg');
+                contentMap[i] = factory.contentCreation('Title ' + i, 'type ' + i + 10, 'img/' + i + '.jpg');
             }
             clearInterval(this);
             deferred.resolve(contentMap);
@@ -24,17 +24,12 @@ function commFnc($http, $q, factory) {
     };
 
     function loadPres(presName, presID) {
-      var deferred = $q.defer();
-      //var contentMap = {"key1":"value1","key2":"value2"};
-      var contentMap = {};
-      setInterval(function(presID) {
-          for (var i = 0; i < 9; i++) {
-              contentMap[i] = factory.contentCreation('Title ' + i, 'jpg', 'img/' + i + '.jpg');
-          }
-          clearInterval(this);
-          deferred.resolve(contentMap);
-      }, 3000, presID);
-      return deferred.promise;
+        var deferred = $q.defer();
+        setInterval(function(presID) {
+            clearInterval(this);
+            deferred.resolve(factory.presentationCreation(presName,'description'));
+        }, 3000, presID);
+        return deferred.promise;
     };
 
     function savePres() {

@@ -26,15 +26,14 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
             $log.error('failure loading images', errorPayload);
         });
 
+
     firstPresentation.then(
         function(payload) {
             $scope.presentationMap.payload = payload;
-
+            //TODO check next line
             for (key in $scope.presentationMap.payload) {
-              //TODO
-                $scope.currentPresentation = $scope.presentationMap.payload[key];
+                $scope.currentPresentation[key] = $scope.presentationMap.payload[key];
             }
-
         },
         function(errorPayload) {
             $log.error('failure loading presentation', errorPayload);
@@ -44,7 +43,6 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     $scope.newSlide = function() {
         var slide = factory.slidCreation("slide-Title", "slide-text");
         $scope.currentPresentation.slideArray.push(slide);
-        console.log($scope.currentPresentation);
     }
 
     $scope.savePres = function() {
