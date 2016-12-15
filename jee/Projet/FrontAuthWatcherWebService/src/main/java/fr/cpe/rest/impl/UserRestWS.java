@@ -1,17 +1,20 @@
 package fr.cpe.rest.impl;
 
 import java.util.List;
-
 import javax.inject.Inject;
 
+import fr.cpe.ejb.MessageReceiverSyncLocal;
+import fr.cpe.ejb.MessageSenderLocal;
 import fr.cpe.model.UserModel;
 import fr.cpe.model.UserResponseModel;
 import fr.cpe.rest.IUserRestWS;
 import fr.cpe.services.IUserService;
 
+
 public class UserRestWS implements IUserRestWS {
 	@Inject
 	IUserService userService;
+	 
 	
 	@Override
 	public List<UserModel> listUser() {

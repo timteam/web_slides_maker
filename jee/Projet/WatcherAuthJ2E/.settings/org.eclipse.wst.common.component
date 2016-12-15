@@ -11,6 +11,9 @@
         <dependent-module archiveName="MiddleAuthWatcherEJB.jar" deploy-path="/" handle="module:/resource/MiddleAuthWatcherEJB/MiddleAuthWatcherEJB">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="javax.jms-api.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/jms/javax.jms-api/2.0/javax.jms-api-2.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="WatcherAuthProject.jar" deploy-path="/" handle="module:/resource/WatcherAuthProject/WatcherAuthProject">
             <dependency-type>uses</dependency-type>
         </dependent-module>
