@@ -8,12 +8,16 @@ function commFnc($http,$q ){
          savePres:      savePres
 
      };
+     function loadImages(){
 
-   function loadImages(){
-   }
-   function loadPres(){
-   }
-   function savePres(){
-   }
+     };
+     function loadPres(){
+
+     };
+     function savePres(){
+
+     };
+
+   //TODO
 
 };

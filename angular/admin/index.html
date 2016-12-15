@@ -103,22 +103,34 @@
                         </div>
 
                     </div>
-                    <div id="dropZone" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div ng-include="'pages/DropZoneArea.html'" </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentBlock" ng-repeat="content in contentMap.array | filter:searchContent | orderBy: 'title'" > <input type="text" ng-model="content.title" class="form-control" id="currentContentTitle"> <div ng-drag="true" ng-drag-data="content" ng-drag-success="onDragComplete($data,$event)"> <img ng-src="{{content.src}}" alt="{{content.title}}" class="img-thumbnail"> </div> </div> </div> </div> </div> <script src="lib/js/jquery-1.11.3.min.js"></script>
-                    <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-                    <script src="lib/js/dropzone.js"></script>
+                    <div id="dropZone" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div ng-include="'pages/DropZoneArea.html'"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentBlock" ng-repeat="content in contentMap.array | filter:searchContent | orderBy: 'title'">
+                        <input type="text" ng-model="content.title" class="form-control" id="currentContentTitle">
+                        <div ng-drag="true" ng-drag-data="content" ng-drag-success="onDragComplete($data,$event)">
+                            <img ng-src="{{content.src}}" alt="{{content.title}}" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="lib/js/jquery-1.11.3.min.js"></script>
+        <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+        <script src="lib/js/dropzone.js"></script>
 
-                    <!-- ANGULAR -->
-                    <script src="lib/js/angular.min.js"></script>
-                    <script src="lib/ngDraggable-master/ngDraggable.js"></script>
+        <!-- ANGULAR -->
+        <script src="lib/js/angular.min.js"></script>
+        <script src="lib/ngDraggable-master/ngDraggable.js"></script>
 
-                    <script src="js/services/FactoryService.js"></script>
-                    <script src="js/services/CommService.js"></script>
-                    <script src="js/application/AdminApp.js"></script>
+        <script src="js/services/FactoryService.js"></script>
+        <script src="js/services/CommService.js"></script>
+        <script src="js/application/AdminApp.js"></script>
 
-                    <script src="js/controllers/EventController.js"></script>
-                    <script src="js/controllers/PlayerController.js"></script>
-                    <script src="js/controllers/DropZoneController.js"></script>
+        <script src="js/controllers/EventController.js"></script>
+        <script src="js/controllers/PlayerController.js"></script>
+        <script src="js/controllers/DropZoneController.js"></script>
 
-                    <!--  <script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
-                </body>
-            </html>
+        <!--  <script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
+    </body>
+</html>

@@ -6,7 +6,7 @@ var contentType={}
     contentType.VIDEO_CUSTOM="VIDEO_CUSTOM";
 
 
-angular.module('factoryService', []).factory('factory',factoryFnc);
+angular.module('factoryServices', []).factory('factory',factoryFnc);
 
 function factoryFnc(){
      var factory = {
@@ -15,14 +15,14 @@ function factoryFnc(){
          slidCreation:      slidCreation,
          presentationCreation: presentationCreation,
          mapToArray:        mapToArray
-
+         
      };
-
-
+    
+    
     //*********************************************//
     //************** INTERNAL TOOLS  **************//
     //*********************************************//
-
+    
     // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
     function generateUUID(){
         var d = new Date().getTime();
@@ -33,12 +33,12 @@ function factoryFnc(){
         });
         return uuid;
      };
-
-
+    
+    
     //*********************************************//
     //************ FACTORY FUNCTIONS  *************//
     //*********************************************//
-
+     
      function contentCreation(title,type,src){
         var content={};
         content.id=generateUUID();
@@ -47,8 +47,8 @@ function factoryFnc(){
         content.type=type;
         return content;
      };
-
-
+    
+    
      function slidCreation(title,txt){
         var slid={};
         slid.id=generateUUID();
@@ -57,8 +57,8 @@ function factoryFnc(){
         slid.contentMap={};
         return slid;
      };
-
-
+    
+    
      function presentationCreation(title,description){
         var presentation={};
         presentation.id=generateUUID();
@@ -67,8 +67,8 @@ function factoryFnc(){
         presentation.slidArray=[];
         return presentation;
      };
-
-
+   
+    
     function mapToArray(map){
         contentArray=[];
         for(key in map){
@@ -76,6 +76,7 @@ function factoryFnc(){
         }
         return contentArray;
     };
-
+    
    return factory;
 };
+    
