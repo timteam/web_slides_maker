@@ -21,6 +21,16 @@ function commFnc($http, $q, factory) {
             clearInterval(this);
             deferred.resolve(contentMap);
         }, 3000);
+
+        // $http.get('/resources_list').
+        // success(function(data, status, headers, config) {
+        //     deferred.resolve(data);
+        // }).
+        // error(function(data, status, headers, config) {
+        //     deferred.reject(status);
+        //     // or server returns response with an error status.
+        // });
+        
         return deferred.promise;
     };
 
@@ -34,6 +44,16 @@ function commFnc($http, $q, factory) {
             clearInterval(this);
             deferred.resolve(presentationMap);
         }, 3000);
+
+        // $http.get('/loadPres').
+        // success(function(data, status, headers, config) {
+        //     deferred.resolve(data);
+        // }).
+        // error(function(data, status, headers, config) {
+        //     deferred.reject(status);
+        //     // or server returns response with an error status.
+        // });
+
         return deferred.promise;
     };
 
