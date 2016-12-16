@@ -3,8 +3,6 @@ package fr.cpe.rest.impl;
 import java.util.List;
 import javax.inject.Inject;
 
-import fr.cpe.ejb.MessageReceiverSyncLocal;
-import fr.cpe.ejb.MessageSenderLocal;
 import fr.cpe.model.UserModel;
 import fr.cpe.model.UserResponseModel;
 import fr.cpe.rest.IUserRestWS;

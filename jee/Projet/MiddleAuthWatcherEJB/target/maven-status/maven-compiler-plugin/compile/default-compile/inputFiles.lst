@@ -1,3 +1,8 @@
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/impl/MessageSender.java
 /Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/services/impl/HelloWorldService.java
-/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/MessageSender.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/dao/impl/UserDAO.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/MessageReceiverSyncRemote.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/MessageSenderRemote.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/impl/MessageReceiverSync.java
 /Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/services/impl/UserService.java
+/Users/Margaux/WorkspaceJEE/Projet/MiddleAuthWatcherEJB/src/main/java/fr/cpe/ejb/impl/MessageSenderQueue.java

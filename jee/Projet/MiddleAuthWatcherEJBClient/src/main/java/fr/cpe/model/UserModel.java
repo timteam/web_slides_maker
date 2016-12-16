@@ -1,8 +1,14 @@
 package fr.cpe.model;
 
+import java.io.Serializable;
 
+public class UserModel implements Serializable {
 
-public class UserModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	private String login;
 	
@@ -17,7 +23,6 @@ public class UserModel {
 
 	public UserModel() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getLogin() {

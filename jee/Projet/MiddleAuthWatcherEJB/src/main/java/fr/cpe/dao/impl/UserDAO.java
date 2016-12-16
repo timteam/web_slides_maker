@@ -1,5 +1,6 @@
-package fr.cpe.dao;
+package fr.cpe.dao.impl;
 
+import fr.cpe.dao.IUserDAO;
 import fr.cpe.model.UserModel;
 import fr.cpe.model.UserResponseModel;
 
@@ -10,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 
 @Stateless
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
     @PersistenceContext
     EntityManager em;
