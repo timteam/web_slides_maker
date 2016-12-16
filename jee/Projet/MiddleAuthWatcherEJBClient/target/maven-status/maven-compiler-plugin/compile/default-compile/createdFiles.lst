@@ -1,5 +1,8 @@
-fr/cpe/dao/UserDAO.class
+fr/cpe/ejb/MessageSenderLocal.class
+fr/cpe/ejb/MessageSenderQueueLocal.class
+fr/cpe/dao/IUserDAO.class
 fr/cpe/model/UserModel.class
 fr/cpe/services/IUserService.class
+fr/cpe/ejb/MessageReceiverSyncLocal.class
 fr/cpe/model/UserResponseModel.class
 fr/cpe/services/IHelloWorldService.class

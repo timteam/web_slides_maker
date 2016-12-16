@@ -1,9 +1,12 @@
 package fr.cpe.ejb;
 
-import fr.cpe.model.UserResponseModel;
+import javax.ejb.Local;
 
+import fr.cpe.model.UserModel;
+
+@Local
 public interface MessageSenderLocal {
-
 	public void sendMessage(String message);
-	public void sendMessage(UserResponseModel user);
+	public void sendMessage(UserModel user);
+
 }

@@ -1,3 +1,8 @@
+fr/cpe/ejb/impl/MessageReceiverSync.class
+fr/cpe/ejb/MessageReceiverSyncRemote.class
 fr/cpe/services/impl/UserService.class
-fr/cpe/ejb/MessageSender.class
+fr/cpe/ejb/impl/MessageSender.class
 fr/cpe/services/impl/HelloWorldService.class
+fr/cpe/ejb/impl/MessageSenderQueue.class
+fr/cpe/dao/impl/UserDAO.class
+fr/cpe/ejb/MessageSenderRemote.class

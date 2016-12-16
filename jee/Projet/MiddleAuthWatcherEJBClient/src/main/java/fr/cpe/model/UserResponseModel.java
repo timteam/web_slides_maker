@@ -47,7 +47,6 @@ public class UserResponseModel implements Serializable{
 
 	public UserResponseModel() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public UserResponseModel(String login, String pwd, String role, String lastName, String surName) {
@@ -98,14 +97,6 @@ public class UserResponseModel implements Serializable{
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
-
-//	public boolean isValidOK() {
-//		return validOK;
-//	}
-//
-//	public void setValidOK(boolean validOK) {
-//		this.validOK = validOK;
-//	}
 
 	@Override
 	public String toString() {
