@@ -35,7 +35,7 @@ public class AuthWatcherMsgDrivenEJB implements MessageListener {
 
 	@EJB 
 	MessageSenderQueueLocal sender;
-	
+
 	@Inject
 	IUserDAO userDAO;
 	/**
@@ -64,14 +64,18 @@ public class AuthWatcherMsgDrivenEJB implements MessageListener {
 					System.out.println("User Details: ");
 					System.out.println("login:"+user.getLogin());
 					System.out.println("pwd:"+user.getPwd());
-					
-					//Auth
-					UserResponseModel userResp = userDAO.authUser(user);
-					if( !userResp.getRole().isEmpty()){
-						sender.sendMessage(userResp);
 
-					} else {
-						sender.sendMessage("Not a valid user");
+					//Auth
+					try {
+						UserResponseModel userResp = userDAO.authUser(user);
+						if( !userResp.getRole().isEmpty()){
+							sender.sendMessage(userResp);
+
+						} else {
+							sender.sendMessage("Not a valid user");
+						}
+					} catch (Exception e){
+						sender.sendMessage("Bad credentials");
 					}
 				}
 

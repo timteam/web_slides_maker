@@ -14,29 +14,33 @@ import fr.cpe.ejb.MessageSenderLocal;
 
 @Stateless
 public class UserService implements IUserService {
-	 
+
 	@EJB
 	MessageSenderLocal sender;
-	 	 
+
 	@EJB
 	MessageReceiverSyncLocal receiver;
-	
-	
+
+
 	@Override
 	public List<UserResponseModel> serviceListUser() {
-		
 		return null;
 	}
 
 	@Override
 	public UserResponseModel serviceLogin(UserModel user) {		
-
 		sender.sendMessage(user);
-		
-		UserResponseModel logged = receiver.receiveMessage();
-//		System.out.println(logged.toString());
-		return logged;
-		
+		try {
+			UserResponseModel logged = receiver.receiveMessage();
+			//		System.out.println(logged.toString());
+			if (logged.getLogin().isEmpty()){
+				return null;
+			} else {
+				return logged;
+			}
+		} catch(Exception e){
+			return null;
+		}
 	}
-	
+
 }
