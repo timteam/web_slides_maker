@@ -20,6 +20,9 @@ server.listen( CONFIG.port );
 app.use( '/admin', express.static( path.join( __dirname, 'public/admin' ) ) );
 app.use( '/watch', express.static( path.join( __dirname, 'public/watch' ) ) );
 
+var SlidController = require('./app/routes/slid.route.js');
+app.use( SlidController );
+
 
 app.use("/loadPres", function(request, response, cb) {
     var dir = CONFIG.presentationDirectory;
