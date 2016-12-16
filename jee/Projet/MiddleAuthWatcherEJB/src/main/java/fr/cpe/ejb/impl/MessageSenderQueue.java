@@ -29,7 +29,6 @@ public class MessageSenderQueue implements MessageSenderQueueLocal {
 	 * Default constructor. 
 	 */
 	public MessageSenderQueue() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -18,7 +18,6 @@ public class UserRestWS implements IUserRestWS {
 
 	@Override
 	public List<UserModel> listUser() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -27,15 +26,12 @@ public class UserRestWS implements IUserRestWS {
 		System.out.println(user.toString());
 		UserResponseModel u = userService.serviceLogin(user); 
 		if (u ==  null) {
+			//Cannot authenticate user
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		return u;
 
 	}
 
-	@Override
-	public String noUser() {
-		return "Bad Credential";
-	}
 
 }

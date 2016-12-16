@@ -25,8 +25,5 @@ public interface IUserRestWS {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/WatcherAuth")
 	UserResponseModel login(UserModel user);
-	
-	@POST
-	@Produces(MediaType.TEXT_HTML)
-	String noUser();
+
 }

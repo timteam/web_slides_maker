@@ -32,7 +32,7 @@ public class UserService implements IUserService {
 		sender.sendMessage(user);
 		try {
 			UserResponseModel logged = receiver.receiveMessage();
-			//		System.out.println(logged.toString());
+
 			if (logged.getLogin().isEmpty()){
 				return null;
 			} else {

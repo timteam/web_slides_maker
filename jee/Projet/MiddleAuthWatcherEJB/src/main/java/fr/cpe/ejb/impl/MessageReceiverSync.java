@@ -25,7 +25,6 @@ public class MessageReceiverSync implements MessageReceiverSyncRemote, MessageRe
      * Default constructor. 
      */
     public MessageReceiverSync() {
-        // TODO Auto-generated constructor stub
     }
     
     @Inject //injection de dépendances
