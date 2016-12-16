@@ -4,7 +4,6 @@ eventCrtFnt.$inject = ['$scope', '$log', '$window', 'factory', 'comm'];
 
 function eventCrtFnt($scope, $log, $window, factory, comm) {
 
-
     $scope.currentPresentation = factory.presentationCreation("template_pres", "description of the template présentation");
 
     //for available content
@@ -85,7 +84,5 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
         }
         return false
     }
-
-
 
 };
