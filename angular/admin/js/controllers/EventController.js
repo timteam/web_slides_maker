@@ -46,7 +46,13 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     }
 
     $scope.savePres = function() {
-        comm.savePres($scope.currentPresentation);
+        comm.savePres($scope.currentPresentation).then(
+            function(jsonSaved) {
+                console.log(jsonSaved);
+            },
+            function(error) {
+                $log.error('Error saving presentation:', errorPayload);
+            });
     }
 
     $scope.selectCurrentSlid = function(slide) {

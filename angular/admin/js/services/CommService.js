@@ -57,9 +57,9 @@ function commFnc($http, $q, factory) {
         return deferred.promise;
     };
 
-    function savePres() {
+    function savePres(presentation) {
         var deferred = $q.defer();
-        deferred.resolve(true);
+        deferred.resolve(JSON.stringify(presentation));
         return deferred.promise;
     };
 
