@@ -1,8 +1,4 @@
 /node/node_modules/*
 /jee/Projet/wildfly-10.1.0.Final/*
-
-jee/.metadata/*
-<<<<<<< HEAD
+/jee/.metadata/*
 /.idea/*
-=======
->>>>>>> angular-step-4
