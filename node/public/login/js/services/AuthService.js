@@ -5,12 +5,16 @@ function authFnc($log, $http, $q) {
     var userMap = {};
     userMap['jdoe'] = 'jdoepwd';
     userMap['tim'] = 'tim';
+    userMap['watcher'] = 'watcher';
+    userMap['admin'] = 'admin';
     userMap['psmith'] = 'psmithpwd';
     userMap['tp'] = 'tp';
 
     var roleMap = {};
     roleMap['jdoe'] = 'watcher';
     roleMap['tim'] = 'admin';
+    roleMap['watcher'] = 'watcher';
+    roleMap['admin'] = 'admin';
     roleMap['psmith'] = 'watcher';
     roleMap['tp'] = 'admin';
 
