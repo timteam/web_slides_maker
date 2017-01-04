@@ -16,13 +16,17 @@ var defaultRoute = require( './app/routes/default.route.js' );
 var utils = require( './app/utils/utils.js' );
 app.use( defaultRoute );
 var server = http.createServer( app );
-server.listen( CONFIG.port );
+
 app.use( '/admin', express.static( path.join( __dirname, 'public/admin' ) ) );
 app.use( '/watch', express.static( path.join( __dirname, 'public/watch' ) ) );
 
+// Controller
 var SlidController = require('./app/routes/slid.route.js');
 app.use( SlidController );
 
+// controller socket io
+//var IOController = require("./app/controllers/io.controller.js");
+//IOController.listen(server);
 
 app.use("/loadPres", function(request, response, cb) {
     var dir = CONFIG.presentationDirectory;
@@ -63,14 +67,14 @@ app.use("/savePres", function(request, response) {
     var contents = request.body;
     var dir = CONFIG.presentationDirectory;
 
-    console.log(contents);
+    console.log("content: "+contents);
     var savedName = path.join(dir, contents.id + ".pres.json");
-    console.log(request.body);
-    console.log(contents.id);
+    console.log("body: "+request.body);
+    console.log("content.id: "+contents.id);
     console.log(savedName);
 
-    fs.writeFile(savedName, JSON.stringify(contents), 'utf8', response.end());
-
+    fs.writeFile(path.join(CONFIG.presentationDirectory, contents.id+".pres.json"), JSON.stringify(contents), "utf8", response.end());
 });
 
 
+server.listen( CONFIG.port );
