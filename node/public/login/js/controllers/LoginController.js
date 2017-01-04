@@ -15,15 +15,15 @@ function loginCrtFnt($scope, $log, $window, auth) {
         // }
 
         if (user != null) {
-            //var promise = auth.localAuthAsk(user.login, user.pwd);
-            var promise = auth.authAsk(user.login, user.pwd);
+            var promise = auth.localAuthAsk(user.login, user.pwd);
+            //var promise = auth.authAsk(user.login, user.pwd);
             promise.then(function(role) {
                 switch (role) {
                     case 'admin':
-                        $window.open('admin.html', '_self');
+                        $window.open('/admin', '_self');
                         break;
                     case 'watcher':
-                        $window.open('watch.html', '_self');
+                        $window.open('/watch', '_self');
                         break;
                     default:
                         $scope.errorMessage = 'Unknown role';

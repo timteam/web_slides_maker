@@ -19,6 +19,7 @@ var server = http.createServer( app );
 
 app.use( '/admin', express.static( path.join( __dirname, 'public/admin' ) ) );
 app.use( '/watch', express.static( path.join( __dirname, 'public/watch' ) ) );
+app.use( '/login', express.static( path.join( __dirname, 'public/login' ) ) );
 
 // Controller
 var SlidController = require('./app/routes/slid.route.js');
