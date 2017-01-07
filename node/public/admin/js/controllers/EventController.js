@@ -20,18 +20,17 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     available_content.then(
         function(payload) {
             $scope.contentMap.payload = payload;
-            $scope.contentMap.array = factory.mapToArray(payload);
+            $scope.contentMap.array=factory.mapToArray(payload.data);
         },
         function(errorPayload) {
-            $log.error('failure loading images', errorPayload);
+            $log.error('failure loading available content images', errorPayload);
         });
 
 
     firstPresentation.then(
         function(payload) {
             $scope.presentationMap.payload = payload;
-            //TODO check next line
-            for (key in $scope.presentationMap.payload) {
+            for(key in $scope.presentationMap.payload){
                 $scope.currentPresentation = $scope.presentationMap.payload[key];
             }
         },

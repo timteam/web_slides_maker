@@ -17,19 +17,20 @@ this.listen = function(server) {
     ioServer.on('connection', function(socket) {
         socket.emit('connection');
         socket.on('data_comm', function(data) {
-            console.log('received event data_comm with data : '+data);
+            console.log('received event data_comm with data : ' + data);
             socketMap[data] = socket;
             if (prevData !== '') {
-                socket.emit('currentSlidEvent',prevData);
+                socket.emit('currentSlidEvent', prevData);
             }
         });
         socket.on('slidEvent', function(data) {
             console.log('received event slidEvent');
+
             var cmd = data.CMD;
             var id = (cmd === 'START' ? data.PRES_ID : presId);
             var slidId;
-
-            fs.readFile(path.join(CONFIG.presentationDirectory, id+".pres.json"), function(err,data) {
+            fs.readFile(path.join(CONFIG.presentationDirectory, id + ".pres.json"), function(err, data) {
+              if(data ){
                 var slids = JSON.parse(data.toString()).slidArray;
 
                 if (presId !== id) {
@@ -42,7 +43,7 @@ this.listen = function(server) {
                 }
 
                 if (cmd === 'END') {
-                    slidIndex = slids.length-1;
+                    slidIndex = slids.length - 1;
                 }
 
                 if (cmd === 'BEGIN') {
@@ -54,19 +55,17 @@ this.listen = function(server) {
                         if (slidIndex !== 0) {
                             slidIndex--;
                         }
-                    }
-                    else {
+                    } else {
                         slidIndex = 0;
                     }
                 }
 
                 if (cmd === 'NEXT') {
                     if (slidIndex !== '') {
-                        if (slidIndex < slids.length-1) {
+                        if (slidIndex < slids.length - 1) {
                             slidIndex++;
                         }
-                    }
-                    else {
+                    } else {
                         slidIndex = 0;
                     }
                 }
@@ -74,19 +73,22 @@ this.listen = function(server) {
                 if (cmd === 'START' || cmd === 'END' || cmd === 'BEGIN' || cmd === 'PREV' || cmd === 'NEXT') {
                     if (err) {
                         console.log(err);
-                    }
-                    else {
+                    } else {
                         var data = slids[slidIndex];
                         data.src = "/slid/" + id;
                         for (var key in socketMap) {
                             if (socketMap.hasOwnProperty(key)) {
                                 prevData = data;
-                                socketMap[key].emit('currentSlidEvent',data);
+                                socketMap[key].emit('currentSlidEvent', data);
                             }
                         }
                     }
                 }
+              }else{
+                console.log('error, no data set');
+              }
             });
+
         });
     });
 }
