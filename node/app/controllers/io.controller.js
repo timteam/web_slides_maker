@@ -16,11 +16,15 @@ this.listen = function(server) {
     var play = false;
     var slids = {};
     var timer = null;
+    var prevData = '';
     ioServer.on('connection', function(socket) {
         socket.emit('connection');
         socket.on('data_comm', function(data) {
             console.log('received data_comm event');
             socketMap[data] = socket;
+            if (prevData !== '') {
+                socket.emit('currentSlidEvent', prevData);
+            }
         });
         socket.on('slidEvent', function(data) {
             console.log('received slidEvent');
@@ -71,12 +75,13 @@ this.listen = function(server) {
             }
             var play = function() {
                 sendNotifications(slids[slidIndex]);
+                clearInterval(timer);
                 timer = setInterval(next, 3000);
             }
             var pause = function() {
-              if(timer){
-                  clearInterval(timer);
-              }
+                if (timer) {
+                    clearInterval(timer);
+                }
             }
             var next = function() {
                 if (slidIndex < slids.length - 1) {
@@ -92,6 +97,7 @@ this.listen = function(server) {
                 slid.src = "/slid/" + id;
                 for (var key in socketMap) {
                     if (socketMap.hasOwnProperty(key)) {
+                        prevData = data;
                         socketMap[key].emit('currentSlidEvent', slid);
                     }
                 }

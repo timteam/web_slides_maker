@@ -6,26 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Watcher</title>
 
-        <!-- Bootstrap -->
+        <!-- CSS -->
         <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/js.css" rel="stylesheet">
+        <link href="css/stylish-portfolio.css" rel="stylesheet">
 
     </head>
     <body>
+      <header id="top" class="header" ng-style="{'background-image': 'url(http://localhost:1337/slids/'+ contentMap.payload.data[currentSlide.contentMap[1]].id + ')'}">
+          <div class="text-vertical-center">
+              <h1 id="presentationTitle">{{currentSlide.title}}</h1>
+              <h2 id="currentSlideText">{{currentSlide.txt}}</h2>
+          </div>
+      </header>
 
-        <div class="container-fluid fullScreenHeight zeroRef">
-            <div class="row container-fluid fullScreenHeight ">
-                <h1 id="presentationTitle">{{currentSlide.title}}</h2>
-                <h2 id="currentSlideTitle">{{currentSlide.title}}</h2>
-                <p id="currentSlideText">{{currentSlide.txt}}</p>
-                <div ng-if="currentSlide && !isSlidContentEmpty(currentSlide)">
-                    <img ng-src="../slids/{{contentMap.payload.data[currentSlide.contentMap[1]].id}}" alt="{{contentMap.payload.data[currentSlide.contentMap[1]].title}}" class="img-responsive">
-                </div>
-                <div class="text-center" ng-if="!currentSlide || isSlidContentEmpty(currentSlide)">
-                    <h2>No image set for the current slide</h2>
-                </div>
-            </div>
-        </div>
+
 
         <script src="lib/js/jquery-1.11.3.min.js"></script>
         <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>

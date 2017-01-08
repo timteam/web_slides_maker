@@ -14,7 +14,7 @@ function watcherCrtFnt($scope, factory, comm) {
             $scope.contentMap.array=factory.mapToArray(payload);
         },
         function(errorPayload) {
-            $log.error('failure loading movie', errorPayload);
+            $log.error('failure loading slide', errorPayload);
         });
 
     var socket = io.connect();
