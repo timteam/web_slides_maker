@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en" ng-app="watcherApp" ng-controller="watcherCtrl">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Watcher</title>
 
-<h1>watch</h1>
+        <!-- CSS -->
+        <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/js.css" rel="stylesheet">
+        <link href="css/stylish-portfolio.css" rel="stylesheet">
 
-<p>My first paragraph.</p>
+    </head>
+    <body>
+      <header id="top" class="header" ng-style="{'background-image': 'url(http://localhost:1337/slids/'+ contentMap.payload.data[currentSlide.contentMap[1]].id + ')'}">
+          <div class="text-vertical-center">
+              <h1 id="presentationTitle">{{currentSlide.title}}</h1>
+              <h2 id="currentSlideText">{{currentSlide.txt}}</h2>
+          </div>
+      </header>
 
-</body>
+
+
+        <script src="lib/js/jquery-1.11.3.min.js"></script>
+        <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+        <!-- ANGULAR -->
+        <script src="lib/js/angular.min.js"></script>
+        <script src="js/services/FactoryService.js"></script>
+        <script src="js/services/CommService.js"></script>
+        <script src="js/application/WatcherApp.js"></script>
+        <script src="js/controllers/WatcherController.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    </body>
 </html>

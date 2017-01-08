@@ -26,8 +26,8 @@ var SlidController = require('./app/routes/slid.route.js');
 app.use( SlidController );
 
 // controller socket io
-//var IOController = require("./app/controllers/io.controller.js");
-//IOController.listen(server);
+var IOController = require("./app/controllers/io.controller.js");
+IOController.listen(server);
 
 app.use("/loadPres", function(request, response, cb) {
     var dir = CONFIG.presentationDirectory;

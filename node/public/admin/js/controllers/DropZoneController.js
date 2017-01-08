@@ -8,7 +8,7 @@
       previewNode.parentNode.removeChild(previewNode);
 
       var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "/file-upload", // Set the url
+        url: "/slids", // Set the url
         thumbnailWidth: 80,
         thumbnailHeight: 80,
         parallelUploads: 20,
@@ -39,12 +39,12 @@
       myDropzone.on("queuecomplete", function(progress) {
         document.querySelector("#total-progress").style.opacity = "0";
       });
-        
+
       myDropzone.on("queuecomplete", function(progress) {
         myDropzone.removeAllFiles(true);
         var available_content=comm.loadImages('test','test');
             available_content.then(
-                function(payload) { 
+                function(payload) {
                    $scope.$parent.contentMap.payload = payload;
                     $scope.$parent.contentMap.array=factory.mapToArray(payload);
                 },
@@ -52,7 +52,7 @@
                     $log.error('failure loading movie', errorPayload);
                 });
       });
-        
+
 
       // Setup the buttons for all transfers
       // The "add files" button doesn't need to be setup because the config

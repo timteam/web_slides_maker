@@ -90,6 +90,5 @@ function commFnc($http, $q, factory) {
             'CMD': "END"
         });
     }
-
     return comm;
 };
