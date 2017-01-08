@@ -13,15 +13,14 @@ this.listen = function(server) {
     var ioServer = io(server);
     var slidIndex = 0;
     var presId = '';
-    var prevData = '';
+    var play = false;
+    var slids = {};
+    var timer = null;
     ioServer.on('connection', function(socket) {
         socket.emit('connection');
         socket.on('data_comm', function(data) {
             console.log('received data_comm event');
             socketMap[data] = socket;
-            if (prevData !== '') {
-                socket.emit('currentSlidEvent', prevData);
-            }
         });
         socket.on('slidEvent', function(data) {
             console.log('received slidEvent');
@@ -29,48 +28,74 @@ this.listen = function(server) {
             var id = (cmd === 'START') ? data.PRES_ID : presId;
             var slidId;
             fs.readFile(path.join(CONFIG.presentationDirectory, id + ".pres.json"), function(err, data) {
-                var slids = JSON.parse(data.toString()).slidArray;
+                slids = JSON.parse(data.toString()).slidArray;
                 if (presId !== id) {
                     slidIndex = 0;
                     presId = id;
                 }
                 switch (cmd) {
-                    //the play button
-                    case 'START':
-                        slidIndex = 0;
-                        break;
-                    case 'END':
-                        slidIndex = slids.length - 1;
-                        break;
-                        //the go to beginning button
+                    //the go to beginning button
                     case 'BEGIN':
-                        slidIndex = 0;
+                        goToBegin(slids);
                         break;
                     case 'PREV':
-                        if (slidIndex > 0) {
-                            slidIndex--;
-                        }
+                        previous(slids);
                         break;
-                    case 'NEXT':
-                        if (slidIndex < slids.length - 1) {
-                            slidIndex++;
-                        }
+                        //the play button
+                    case 'START':
+                        play(slids);
                         break;
                     case 'PAUSE':
+                        pause();
+                        break;
+                    case 'NEXT':
+                        next(slids);
+                        break;
+                    case 'END':
+                        goToEnd(slids);
                         break;
                     default:
                         break;
                 }
-                var data = slids[slidIndex];
-                data.src = "/slid/" + id;
-                for (var key in socketMap) {
-                    if (socketMap.hasOwnProperty(key)) {
-                        prevData = data;
-                        socketMap[key].emit('currentSlidEvent', data);
-                    }
-                }
             });
 
+            var goToBegin = function() {
+                slidIndex = 0;
+                sendNotifications(slids[slidIndex]);
+            }
+            var previous = function() {
+                if (slidIndex > 0) {
+                    slidIndex--;
+                }
+                sendNotifications(slids[slidIndex]);
+            }
+            var play = function() {
+                sendNotifications(slids[slidIndex]);
+                timer = setInterval(next, 3000);
+            }
+            var pause = function() {
+              if(timer){
+                  clearInterval(timer);
+              }
+            }
+            var next = function() {
+                if (slidIndex < slids.length - 1) {
+                    slidIndex++;
+                }
+                sendNotifications(slids[slidIndex]);
+            }
+            var goToEnd = function() {
+                slidIndex = slids.length - 1;
+                sendNotifications(slids[slidIndex]);
+            }
+            var sendNotifications = function(slid) {
+                slid.src = "/slid/" + id;
+                for (var key in socketMap) {
+                    if (socketMap.hasOwnProperty(key)) {
+                        socketMap[key].emit('currentSlidEvent', slid);
+                    }
+                }
+            }
         });
     });
 }
