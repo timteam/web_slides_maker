@@ -1,8 +1,8 @@
 angular.module('adminApp').controller('eventCtrl', eventCrtFnt);
 
 eventCrtFnt.$inject = ['$scope', '$log', '$window', 'factory', 'comm'];
-
 function eventCrtFnt($scope, $log, $window, factory, comm) {
+
 
     $scope.currentPresentation = factory.presentationCreation("template_pres", "description of the template présentation");
 
@@ -20,7 +20,7 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     available_content.then(
         function(payload) {
             $scope.contentMap.payload = payload;
-            $scope.contentMap.array=factory.mapToArray(payload.data);
+            $scope.contentMap.array = factory.mapToArray(payload.data);
         },
         function(errorPayload) {
             $log.error('failure loading available content images', errorPayload);
@@ -30,9 +30,8 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
     firstPresentation.then(
         function(payload) {
             $scope.presentationMap.payload = payload;
-            for(key in $scope.presentationMap.payload){
-                $scope.currentPresentation = $scope.presentationMap.payload[key];
-            }
+            console.log(factory.mapToArray($scope.presentationMap.payload.data)[0]);
+            $scope.currentPresentation = factory.mapToArray($scope.presentationMap.payload.data)[0];
         },
         function(errorPayload) {
             $log.error('failure loading presentation', errorPayload);
@@ -41,16 +40,16 @@ function eventCrtFnt($scope, $log, $window, factory, comm) {
 
     $scope.newSlide = function() {
         var slide = factory.slidCreation("slide-Title", "slide-text");
-        $scope.currentPresentation.slideArray.push(slide);
+        $scope.currentPresentation.slidArray.push(slide);
     }
 
     $scope.savePres = function() {
         comm.savePres($scope.currentPresentation).then(
             function(jsonSaved) {
-                console.log(jsonSaved);
+              alert('Presentation saved');
             },
             function(error) {
-                $log.error('Error saving presentation:', errorPayload);
+              alert('Presentation could not be saved');
             });
     }
 

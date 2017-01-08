@@ -14,7 +14,7 @@ function commFnc($http, $q, factory) {
         $http.get('/slids').
         then(function(data, status, headers, config) {
             deferred.resolve(data);
-        },function(data, status, headers, config) {
+        }, function(data, status, headers, config) {
             deferred.reject(status);
             // or server returns response with an error status.
         });
@@ -38,11 +38,11 @@ function commFnc($http, $q, factory) {
         //deferred.resolve(JSON.stringify(presentation));
         $http.post('/savePres', presentation).
         then(function(data, status, headers, config) {
-            alert('Presentation saved');
+            deferred.resolve(data);
         }, function(data, status, headers, config) {
-            alert('Presentation could not be saved');
+            deferred.reject(status);
         });
-        //return deferred.promise;
+        return deferred.promise;
     };
 
     comm.io = {};
