@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en" ng-app="watcherApp" ng-controller="watcherCtrl">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Watcher</title>
 
-<h1>watch</h1>
+        <!-- Bootstrap -->
+        <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/js.css" rel="stylesheet">
 
-<p>My first paragraph.</p>
+    </head>
+    <body>
 
+        <div class="container-fluid fullScreenHeight zeroRef">
+            <div class="row container-fluid fullScreenHeight ">
+
+                <!-- *************   CENTER PANEL  *************-->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullScreenHeight">
+                    <div class="form-group">
+                        <label for="currentSlideTitle">Title</label>
+                        <input type="text" ng-model="currentSlide.title" class="form-control" id="currentSlideTitle">
+                        <label for="currentSlideText">Text</label>
+                        <textarea rows="5" type="text" ng-model="currentSlide.txt" class="form-control" id="currentSlideText"></textarea>
+                    </div>
+                    <div style="min-height: 100px;min-width: 100px;">
+                        <div ng-if="currentSlide && !isSlidContentEmpty(currentSlide)">
+                            <img ng-src="../slids/{{contentMap.payload.data[currentSlide.contentMap[1]].id}}" alt="{{contentMap.payload.data[currentSlide.contentMap[1]].title}}" class="img-responsive">
+                        </div>
+
+                        <div class="text-center" ng-if="!currentSlide || isSlidContentEmpty(currentSlide)">
+                            <h2>No image set for the current slide</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/js/jquery-1.11.3.min.js"></script>
+    <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+    <!-- ANGULAR -->
+    <script src="lib/js/angular.min.js"></script>
+    <script src="js/services/FactoryService.js"></script>
+    <script src="js/services/CommService.js"></script>
+    <script src="js/application/WatcherApp.js"></script>
+    <script src="js/controllers/WatcherController.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 </body>
 </html>
